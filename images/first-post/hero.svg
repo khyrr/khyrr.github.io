@@ -26,7 +26,7 @@
   <rect width="1200" height="630" fill="url(#g)" />
 
   <g transform="translate(60,230)">
-    <text class="title">Khyarum</text>
+    <text class="title">khyrr</text>
     <text class="subtitle" y="62">
       <tspan class="subtitle-strong">First Post</tspan>
       <tspan dx="10">Notes, writeups, and experiments</tspan>

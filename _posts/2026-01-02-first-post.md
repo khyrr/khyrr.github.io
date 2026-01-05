@@ -1,6 +1,6 @@
 ---
 title: "First Post"
-author: "khyarum"
+author: "khyrr"
 categories: [announcement]
 date: 2026-01-02 12:00:00 +0000
 tags: [welcome, announcement, tryhackme]
@@ -9,11 +9,11 @@ pin: false
 media_subpath: /images/first-post
 image:
   path: hero.svg
-  alt: "Khyarum first post hero"
+  alt: "khyrr first post hero"
 excerpt: "An introduction to my blog notes, experiments, and writeups for TryHackMe rooms and CTF challenges."
 ---
 
-# Hello, I’m Khyarum welcome to my personal blog.
+# Hello, I’m khyrr welcome to my personal blog.
 
 I’ll be using this space to share short notes and, primarily, writeups and walkthroughs of TryHackMe rooms, CTF challenges, and other security-related challenges.
 
