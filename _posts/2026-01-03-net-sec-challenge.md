@@ -7,7 +7,7 @@ tags: [netsec, nmap, telnet, ftp, hydra, enumeration]
 media_subpath: /images/net-sec-challenge
 render_with_liquid: false
 image:
-  path: img0.png
+  path: room.webp
 ---
 
 
