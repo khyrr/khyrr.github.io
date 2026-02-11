@@ -2,7 +2,7 @@
 layout: post
 title: "TryHackMe: Net Sec Challenge"
 date: 2026-01-03 13:30:00 +00:00
-categories: [tryhackme, writeups]
+categories: [tryhackme]
 tags: [netsec, nmap, telnet, ftp, hydra, enumeration]
 media_subpath: /images/net-sec-challenge
 render_with_liquid: false
