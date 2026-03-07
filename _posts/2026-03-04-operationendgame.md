@@ -259,7 +259,7 @@ SMB         10.113.159.255  445    AD               [+] thm.local\CODY_ROY:[REDA
 
 ```
 
-![CrackMapExec confirming CODY_ROY credentials](cme-codyroy.png)
+
 
 Now that we have a real user account, I re-ran the enumeration and got a bigger list.
 
