@@ -1,4 +1,4 @@
-{
+bundle exec jekyll build{
   "name": "MyWebSite",
   "short_name": "MySite",
   "icons": [

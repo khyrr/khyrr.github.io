@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "TryHackMe: Operation Endgame"
+description: "TryHackMe Operation Endgame walkthrough with Kerberoasting, BloodHound, GenericWrite and DA."
+excerpt: "Walkthrough for TryHackMe Operation Endgame: guest enumeration, Kerberoasting, BloodHound GenericWrite abuse, and Domain Admin takeover."
 date: 2026-03-04 13:30:00 +0000
 categories: [TryHackMe, Active Directory]
 tags:
@@ -20,7 +22,7 @@ image:
   path: room.webp
 ---
 
-**Operation Endgame** is a TryHackMe Active Directory room. Starting from a guest account, we enumerate domain users, Kerberoast a service account, reuse the cracked password to find another account, abuse GenericWrite to Kerberoast a second user, then RDP in and find hardcoded credentials in a PowerShell script that give us Domain Admin.
+**[Operation Endgame](https://tryhackme.com/room/operationendgame)** is a TryHackMe Active Directory room. Starting from a guest account, we enumerate domain users, Kerberoast a service account, reuse the cracked password to find another account, abuse GenericWrite to Kerberoast a second user, then RDP in and find hardcoded credentials in a PowerShell script that give us Domain Admin.
 
 `Attack Chain Overview`
 
@@ -258,8 +260,6 @@ SMB         10.113.159.255  445    AD               [*] Windows 10 / Server 2019
 SMB         10.113.159.255  445    AD               [+] thm.local\CODY_ROY:[REDACTED]
 
 ```
-
-
 
 Now that we have a real user account, I re-ran the enumeration and got a bigger list.
 
