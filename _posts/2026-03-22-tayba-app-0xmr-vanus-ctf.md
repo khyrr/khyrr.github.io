@@ -9,7 +9,7 @@ tags: [ctf, web, 2fa, totp]
 media_subpath: /images/0xmr/tayba-app
 render_with_liquid: false
 image:
-  path: ../logo.png
+  path: logo.png
   alt: Tayba App
 ---
 
