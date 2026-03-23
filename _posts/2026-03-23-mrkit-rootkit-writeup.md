@@ -12,6 +12,13 @@ image:
   path: logo.png
 ---
 
+A Hacker loaded this rootkit on his machine believing it's hiding his secrets. Can you reveal them?
+vm credentials :
+username: mouthena
+password: password
+
+Challenge URL: [mrKit](https://ctf.0xmr.org/challenges/)
+
 The challenge gave us two files: `mrKit.ova` and `mrkit.ko`. A VM and a kernel module. I decided to look at the module first before touching the VM no point booting something suspicious without knowing what it does.
 
 ## Intended solution
