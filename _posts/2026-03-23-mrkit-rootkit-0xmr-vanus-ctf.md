@@ -112,7 +112,7 @@ find /usr/lib/modules -name "mrkit.ko" 2>/dev/null
 ![lsmod output](vm-lsmod.png){: .shadow }
 ![find module path](vm-find-module.png){: .shadow }
 
-Now for the exploit. The `sequence[]` values are embedded in the `.ko` binary — XOR each 4-byte word with `0xa5b7c3d1` and you get the encoded `(pid, sig)` pairs. I wrote a script with help from Claude that scans the binary for valid pairs and brute-forces all permutations of four until `euid` hits zero.
+Now for the exploit. The `sequence[]` values are embedded in the `.ko` binary XOR each 4-byte word with `0xa5b7c3d1` and you get the encoded `(pid, sig)` pairs. I wrote a script with help from Claude that scans the binary for valid pairs and brute-forces all permutations of four until `euid` hits zero.
 
 Copy-paste into the VM was not working so I served the script over HTTP from my host:
 
