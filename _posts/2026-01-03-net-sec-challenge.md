@@ -4,12 +4,11 @@ title: "TryHackMe: Net Sec Challenge"
 date: 2026-01-03 13:30:00 +00:00
 categories: [TryHackMe]
 tags: [netsec, nmap, telnet, ftp, hydra, enumeration]
-media_subpath: /images/net-sec-challenge
+media_subpath: /images/thm/net-sec-challenge
 render_with_liquid: false
 image:
   path: room.webp
 ---
-
 
 This room is part of the [**Network Security**](https://tryhackme.com/module/network-security) module on TryHackMe.  
 The objective is to practice **methodical network enumeration**, service discovery,
@@ -40,7 +39,7 @@ rather than only listing commands and answers.
 ## Initial Port Enumeration (Below 10,000)
 
 The first step was to identify which services are exposed on common and semi-common ports.
-Since the room explicitly asks about ports *below 10,000*, I limited the scan range instead
+Since the room explicitly asks about ports _below 10,000_, I limited the scan range instead
 of performing a full scan immediately.
 
 ```bash
@@ -56,7 +55,8 @@ PORT     STATE SERVICE
 From this result, several common services are exposed.
 The highest open port below 10,000 is clearly 8080.
 
-## High Port Enumeration (Above 10,000) 
+## High Port Enumeration (Above 10,000)
+
 The room also mentions that a service is running on a non-standard port above 10,000.
 To locate it, I expanded the scan range accordingly.
 
@@ -69,7 +69,8 @@ PORT      STATE SERVICE
 This confirms an additional service listening on port 10021, which will require
 further investigation.
 
-## Confirming the Total Number of Open TCP Ports 
+## Confirming the Total Number of Open TCP Ports
+
 To ensure no ports were missed and to answer the next question accurately,
 I performed a full TCP scan across all ports.
 
@@ -87,7 +88,8 @@ PORT      STATE SERVICE
 At this point, it is clear that the target exposes 6 open TCP ports:
 22, 80, 139, 445, 8080, and 10021.
 
-## Inspecting HTTP Headers for Information Disclosure 
+## Inspecting HTTP Headers for Information Disclosure
+
 Misconfigured web servers often leak information through HTTP response headers.
 To check for this, I inspected the headers on port 80 using Nmap’s http-headers script.
 
@@ -99,7 +101,8 @@ nmap --script=http-headers -p 80 10.81.129.20
 A flag is directly exposed in the Server header, demonstrating a clear case
 of information leakage due to misconfiguration.
 
-## Inspecting the SSH Banner 
+## Inspecting the SSH Banner
+
 SSH services reveal banner information during the initial handshake.
 Using version detection allows us to inspect this banner.
 
@@ -110,7 +113,8 @@ SSH-2.0-OpenSSH_8.2p1 THM{REDACTED}
 
 Here again, sensitive information (a flag) is embedded directly in the service banner.
 
-## Enumerating the FTP Service on a Non-Standard Port 
+## Enumerating the FTP Service on a Non-Standard Port
+
 Earlier scans revealed an unknown service on port 10021.
 To identify it, I ran service detection on that specific port.
 
@@ -121,15 +125,16 @@ nmap -sV -p 10021 10.81.129.20
 
 The service is vsftpd 3.0.5, running on a non-standard port.
 
-## FTP Credential Discovery 
-Two usernames were provided through social engineering: ``eddie`` and ``quinn``.
+## FTP Credential Discovery
+
+Two usernames were provided through social engineering: `eddie` and `quinn`.
 I created a minimal file containing these two accounts.
 
 ```bash
 echo -e "eddie\nquinn" > users.txt
 ```
 
-I then used Hydra to test these users against the FTP service using a password list ``rockyou.txt``.
+I then used Hydra to test these users against the FTP service using a password list `rockyou.txt`.
 
 ```bash
 hydra -L users.txt -P /usr/share/wordlists/rockyou.txt -s 10021 10.81.129.20 ftp -vV
@@ -139,7 +144,8 @@ hydra -L users.txt -P /usr/share/wordlists/rockyou.txt -s 10021 10.81.129.20 ftp
 
 Valid credentials were successfully discovered for both users.
 
-## Accessing the FTP Server and Retrieving the Flag 
+## Accessing the FTP Server and Retrieving the Flag
+
 Using the credentials for quinn, I logged into the FTP service.
 
 ```bash
@@ -162,8 +168,9 @@ local: ftp_flag.txt remote: ftp_flag.txt
 ```
 
 The file was downloaded locally and confirmed to contain a flag.
+
 ```bash
-$ head -c4 ftp_flag.txt 
+$ head -c4 ftp_flag.txt
 THM{
 ```
 
@@ -171,11 +178,10 @@ THM{
 
 Finally, browsing to port 8080 revealed a small web-based challenge.
 
-
 The challenge requires performing a scan **as covertly as possible** to avoid detection by an **IDS (Intrusion Detection System)**. The goal is to scan the target while minimizing the packet count.
 
 > **Important:** Press the **Reset Packet Count** button before starting the scan.
-{: .prompt-danger }
+> {: .prompt-danger }
 
 To reduce the chance of IDS detection, I used a NULL scan, which sends packets without TCP flags and can be less likely to trigger simple IDS rules:
 
@@ -193,6 +199,5 @@ This stealthy approach successfully bypassed the IDS detection, and the flag was
 
 - **6 TCP ports discovered:** 22 (SSH), 80 (HTTP), 139 (NetBIOS), 445 (SMB), 8080 (HTTP-Proxy), 10021 (FTP)
 - **Flags found in:** HTTP headers, SSH banner, FTP file, web challenge
-- **FTP credentials:** Successfully brute-forced using ``Hydra``
+- **FTP credentials:** Successfully brute-forced using `Hydra`
 - **IDS evasion:** NULL scan technique bypassed detection
-

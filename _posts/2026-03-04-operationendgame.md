@@ -16,7 +16,7 @@ tags:
     bloodyad,
     ctf,
   ]
-media_subpath: /images/thm-operationendgame
+media_subpath: /images/thm/operationendgame
 render_with_liquid: false
 image:
   path: room.webp

@@ -4,7 +4,7 @@ title: "TryHackMe: Snapped Phish-ing Line"
 date: 2026-01-14 14:30:00 +00:00
 categories: [TryHackMe]
 tags: [phishing, email-analysis, osint, virustotal, SOC L1]
-media_subpath: /images/snapped-phish-ing-line
+media_subpath: /images/thm/snapped-phish-ing-line
 render_with_liquid: false
 image:
   path: room.webp
