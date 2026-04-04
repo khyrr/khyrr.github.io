@@ -1,6 +1,6 @@
 ---
 title: "First Post"
-author: "viperkhyar"
+author: "khyrr"
 categories: [announcement]
 date: 2026-01-02 12:00:00 +0000
 tags: [welcome, announcement, tryhackme]
@@ -9,11 +9,11 @@ pin: false
 media_subpath: /images/first-post
 image:
   path: hero.svg
-  alt: "viperkhyar first post hero"
+  alt: "khyrr first post hero"
 excerpt: "An introduction to my blog notes, experiments, and writeups for TryHackMe rooms and CTF challenges."
 ---
 
-# Hello, I’m viperkhyar welcome to my personal blog.
+# Hello, I’m khyrr welcome to my personal blog.
 
 I’ll be using this space to share short notes and, primarily, writeups and walkthroughs of TryHackMe rooms, CTF challenges, and other security-related challenges.
 
@@ -31,7 +31,7 @@ My goal is to publish clear, reproducible writeups and step-by-step walkthroughs
 This blog helps me organize my ideas, document my learning, and share useful findings with others. I hope you find something helpful here.
 
 > **Get in touch:** You can find links to my profiles in the sidebar, or open an issue in this repository.
-{: .prompt-tip }
+> {: .prompt-tip }
 
 Thanks for stopping by, more posts coming soon.  
 If there’s a topic you’d like to see first, feel free to let me know.
